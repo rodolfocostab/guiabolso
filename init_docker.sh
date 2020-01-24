@@ -10,4 +10,4 @@ sudo docker swarm init
 
 # Criação da rede que será feito deploy da stack dos containers
 
-docker network create -d overlay server-net
+docker network create -d overlay api-net
