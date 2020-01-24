@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  mongodb:
+    image: 'mongo'
+    ports:
+      - '27017:27017'
+    networks:
+      - server-net
+    volumes:
+      - '/opt/mongodb:/data/db'
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 1m
+        order: start-first
+  server:
+    image: 'node-api:2.0.0'
+    networks:
+      - server-net
+    depends_on:
+      - mongodb
+    ports:
+      - '3000:3000'
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+
+networks:
+  server-net:
+    external:
+      name: server-net
