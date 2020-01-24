@@ -1,19 +1,18 @@
 {
-  "name": "guiabolso",
+  "name": "guiabolso-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "dev": "node node_modules/nodemon/bin/nodemon bin/server"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "server-api",
+  "main": "server.js",
   "dependencies": {
-    "debug": "^4.1.1",
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.8.9",
     "nodemon": "^2.0.2"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Rodolfo Costa",
+  "license": "ISC"
 }
