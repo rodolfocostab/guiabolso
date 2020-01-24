@@ -16,11 +16,36 @@ Docker inicialização, precisamos iniciar o swarm e criar a rede para deploy, e
 chmod +x init_docker.sh && ./init_docker.sh
 ```
 
-Gitlab Runner, precisamos fazer o registro da nossa maquina como runner local no site do gitlab.com, executar shell abaixo
+Gitlab Runner, precisamos fazer o registro da nossa maquina como runner local no site do gitlab.com, executar shell abaixo:
 
 ```
 chmod +x init_gitlab_runner.sh && ./init_gitlab_runner.sh
 ```
+
+Nesse caso acima utilizaremos deploy-api projeto já criado para o CI/CD mas podemos cria um novo
+
+Teremos que mudar somente a variavel --registration-token "xxx" do shell.
+
+## Rodando localmente sem a ferramenta Gitlab CI/CD
+
+Nesse caso é possivel também é somente rodar comandos abaixo
+
+```
+docker build . --tag api:[tag_escolhida]
+```
+
+Depois disso fazer deploy manual Portainer(Opcional)
+
+```
+docker stack deploy --compose-file=./dev/portainer.yml nome_da_sua_stack
+```
+
+Depois disso fazer deploy manual api
+
+```
+docker stack deploy --compose-file=./dev/server.yml nome_da_sua_stack
+```
+
 
 ### Testar a API
 
