@@ -8,11 +8,11 @@ var TaskSchema = new Schema({
     type: String,
     required: 'Entre com nome do Deploy'
   },
-  Versão: {
+  Versao: {
     type: String,
     required: 'Versao do componente'
   },
-  Responsável: {
+  Responsavel: {
     type: String,
     required: 'Nome do responsavel'
   },
