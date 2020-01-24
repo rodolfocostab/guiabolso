@@ -10,7 +10,7 @@ Deploy Portainer em Local:
     - docker stack deploy --compose-file=./dev/portainer.yml api-dev
   when: manual
   tags:
-    - shell
+    - local-shell
 
 Deploy API em DEV:
   stage: deploy-local
@@ -19,4 +19,4 @@ Deploy API em DEV:
     - docker stack deploy --compose-file=./dev/server.yml api-dev
   when: manual
   tags:
-    - shell
+    - local-shell
