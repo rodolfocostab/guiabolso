@@ -31,8 +31,6 @@ exports.read_a_deploy = function(req, res) {
 };
 
 exports.delete_a_deploy = function(req, res) {
-
-
   Deploy.remove({
     _id: req.params.deployId
   }, function(err, deploy) {
