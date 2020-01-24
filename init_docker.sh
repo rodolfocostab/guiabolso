@@ -11,3 +11,7 @@ sudo docker swarm init
 # Criação da rede que será feito deploy da stack dos containers
 
 docker network create -d overlay api-net
+
+# Deploy Portainer
+
+docker stack deploy --compose-file=./dev/portainer.yml api-dev

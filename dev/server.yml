@@ -6,7 +6,7 @@ services:
     ports:
       - '27017:27017'
     networks:
-      - server-net
+      - api-net
     volumes:
       - '/opt/mongodb:/data/db'
     deploy:
@@ -15,10 +15,10 @@ services:
         parallelism: 1
         delay: 1m
         order: start-first
-  server:
-    image: 'node-api:2.0.0'
+  api:
+    image: node-api:$CI_COMMIT_TAG
     networks:
-      - server-net
+      - api-net
     depends_on:
       - mongodb
     ports:
@@ -31,6 +31,6 @@ services:
         order: start-first
 
 networks:
-  server-net:
+  api-net:
     external:
-      name: server-net
+      name: api-net

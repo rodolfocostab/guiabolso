@@ -1,22 +1,23 @@
 stages:
+  - build-api
   - deploy-local
   # - deploy-homolog
   # - deploy-prod
 
-Deploy Portainer em Local:
-  stage: deploy-local
-  allow_failure: true
+Gerando imagem Docker api:
+  stage: build-api
   script:
-    - docker stack deploy --compose-file=./dev/portainer.yml api-dev
-  when: manual
+    - docker build . --tag node-api:$CI_COMMIT_TAG
+  only:
+    - tags
   tags:
-    - local-shell
+    - shell
 
 Deploy API em DEV:
   stage: deploy-local
-  allow_failure: true
+  # before_script:
+  #   - export $CI_COMMIT_TAG
   script:
     - docker stack deploy --compose-file=./dev/server.yml api-dev
-  when: manual
   tags:
-    - local-shell
+    - shell
