@@ -19,5 +19,7 @@ Deploy API em DEV:
   #   - export $CI_COMMIT_TAG
   script:
     - docker stack deploy --compose-file=./dev/server.yml api-dev
+  only:
+    - tags
   tags:
     - shell
