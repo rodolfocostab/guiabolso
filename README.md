@@ -10,6 +10,18 @@ Docker instalado(caso não tenha seguir passo abaixo), para Ubuntu(Debian) e dis
 chmod +x install_docker.sh && ./install_docker.sh
 ```
 
+Docker inicialização, precisamos iniciar o swarm e criar a rede para deploy, executar shell abaixo:
+
+```
+chmod +x init_docker.sh && ./init_docker.sh
+```
+
+Gitlab Runner, precisamos fazer o registro da nossa maquina como runner local no site do gitlab.com, executar shell abaixo
+
+```
+chmod +x init_gitlab_runner.sh && ./init_gitlab_runner.sh
+```
+
 ### Testar a API
 
 A API pode ser utilizada via navegador ou como exemplo via comando curl realizando post para inclusao ou get para consulta.
