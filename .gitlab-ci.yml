@@ -1,0 +1,19 @@
+stages:
+  - deploy-dev
+  # - deploy-homolog
+  # - deploy-prod
+
+variables:
+  # DOCKER_HOST: tcp://0.0.0.0:2375
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  GIT_STRATEGY: clone
+
+Deploy Portainer em DEV:
+  stage: deploy-dev
+  allow_failure: true
+  script:
+    - docker stack deploy --compose-file=./dev/portainer.yml api-dev
+  when: manual
+  tags:
+    - docker
