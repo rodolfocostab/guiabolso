@@ -22,7 +22,7 @@ Deploy API em DEV:
     - curl --location --request POST 'http://127.0.0.1:3000/deploy/' \
       --header 'Content-Type\":" application/x-www-form-urlencoded' \
       --data-urlencode 'Componente=Deploy-app-front' \
-      --data-urlencode 'Versão=\"$TAG\"' \
+      --data-urlencode 'Versão=\"${CI_COMMIT_TAG}\"' \
       --data-urlencode 'Responsável=Rodolfo'
   only:
     - tags
