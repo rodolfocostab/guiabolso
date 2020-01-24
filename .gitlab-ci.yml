@@ -4,10 +4,6 @@ stages:
   # - deploy-homolog
   # - deploy-prod
 
-  TAG: $CI_COMMIT_TAG
-  URL: http://127.0.0.1:3000/deploy
-  CONTENT: 'Content-Type: application/json'
-
 Gerando imagem Docker api:
   stage: build-api
   script:
@@ -19,6 +15,10 @@ Gerando imagem Docker api:
 
 Deploy API em DEV:
   stage: deploy-local
+  variables:
+    TAG: $CI_COMMIT_TAG
+    URL: http://127.0.0.1:3000/deploy
+    CONTENT: 'Content-Type: application/json'
   script:
     - docker stack deploy --compose-file=./dev/server.yml api-dev
     - curl -X POST "${URL}" -H "${CONTENT}" --data-urlencode '{"Componente":Deploy-app-front}' --data-urlencode '{"Versao":\"${TAG}\"}' --data-urlencode '{"Responsavel":Rodolfo}'
