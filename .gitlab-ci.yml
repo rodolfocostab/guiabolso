@@ -1,4 +1,5 @@
 stages:
+  - deploy-portainer
   - build-api
   - deploy-mongodb
   - deploy-local-api
@@ -14,10 +15,18 @@ Gerando imagem Docker api:
   tags:
     - shell
 
+Deploy Portainer:
+  stage: deploy-portainer
+  script:
+    - docker stack deploy --compose-file=./dev/portainer.yml api
+  tags:
+    - shell
+  when: manual
+
 Deploy API em DEV:
   stage: deploy-mongodb
   script:
-    - docker stack deploy --compose-file=./dev/mongodb.yml api-dev
+    - docker stack deploy --compose-file=./dev/mongodb.yml api
   only:
     - tags
   tags:
@@ -26,7 +35,7 @@ Deploy API em DEV:
 Deploy API em DEV:
   stage: deploy-local-api
   script:
-    - docker stack deploy --compose-file=./dev/server.yml api-dev
+    - docker stack deploy --compose-file=./dev/server.yml api
     - |
       curl --location --request POST "http://127.0.0.1:3000/deploy" \
       --header "Content-Type: application/json" \
