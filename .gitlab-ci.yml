@@ -56,7 +56,7 @@ Deploy API:
     - |
       curl --location --request POST "http://127.0.0.1:3000/deploy" \
       --header "Content-Type: application/json" \
-      --data "{\"Status\": \"completo\", \"Versao\": \"${CI_COMMIT_TAG}\", \"Componente\": \"Deploy-teste\", \"Responsavel\": \"${GITLAB_USER_EMAIL}\"}"
+      --data "{\"status\": \"completo\", \"Versao\": \"${CI_COMMIT_TAG}\", \"Componente\": \"Deploy-teste\", \"Responsavel\": \"${GITLAB_USER_EMAIL}\"}"
   only:
     - tags
   tags:
