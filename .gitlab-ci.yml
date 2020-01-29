@@ -23,17 +23,17 @@ Deploy Portainer:
     - shell
   when: manual
 
-# Inicio do Deploy:
-#   stage: deploy-mongodb
-#   script:
-#     - |
-#       curl --location --request POST "http://127.0.0.1:3000/deploy" \
-#       --header "Content-Type: application/json" \
-#       --data "{\"Versao\": \"${CI_COMMIT_TAG}\", \"Componente\": \"Deploy-teste\", \"Responsavel\": \"${GITLAB_USER_EMAIL}\"}"
-#   only:
-#     - tags
-#   tags:
-#     - shell
+Inicio do Deploy:
+  stage: deploy-mongodb
+  script:
+    - |
+      curl --location --request POST "http://127.0.0.1:3000/deploy" \
+      --header "Content-Type: application/json" \
+      --data "{\"Versao\": \"${CI_COMMIT_TAG}\", \"Componente\": \"Deploy-teste\", \"Responsavel\": \"${GITLAB_USER_EMAIL}\"}"
+  only:
+    - tags
+  tags:
+    - shell
 
 Deploy MongoDB:
   stage: deploy-mongodb
@@ -56,7 +56,7 @@ Deploy API:
     - |
       curl --location --request POST "http://127.0.0.1:3000/deploy" \
       --header "Content-Type: application/json" \
-      --data "{\"Versao\": \"${CI_COMMIT_TAG}\", \"Componente\": \"Deploy-teste\", \"Responsavel\": \"${GITLAB_USER_EMAIL}\"}"
+      --data "{\"Status\": \"completo\", \"Versao\": \"${CI_COMMIT_TAG}\", \"Componente\": \"Deploy-teste\", \"Responsavel\": \"${GITLAB_USER_EMAIL}\"}"
   only:
     - tags
   tags:
