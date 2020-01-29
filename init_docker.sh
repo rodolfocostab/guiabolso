@@ -4,6 +4,10 @@
 
 sudo usermod -aG docker $USER
 
+# Abaixar imagem Mongo
+
+sudo docker pull mongo
+
 #  Iniciar Docker Swarm mode
 
 sudo docker swarm init

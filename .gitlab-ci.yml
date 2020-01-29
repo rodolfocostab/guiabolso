@@ -1,6 +1,7 @@
 stages:
   - build-api
-  - deploy-local
+  - deploy-mongodb
+  - deploy-local-api
   # - deploy-homolog
   # - deploy-prod
 
@@ -14,7 +15,16 @@ Gerando imagem Docker api:
     - shell
 
 Deploy API em DEV:
-  stage: deploy-local
+  stage: deploy-mongodb
+  script:
+    - docker stack deploy --compose-file=./dev/mongodb.yml api-dev
+  only:
+    - tags
+  tags:
+    - shell
+
+Deploy API em DEV:
+  stage: deploy-local-api
   script:
     - docker stack deploy --compose-file=./dev/server.yml api-dev
     - |
