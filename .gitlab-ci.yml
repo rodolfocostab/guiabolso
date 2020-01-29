@@ -37,11 +37,11 @@ Inicio do Deploy:
 
 Deploy MongoDB:
   stage: deploy-mongodb
-  # before_script:
-  #   - |
-  #     curl --location --request POST "http://127.0.0.1:3000/deploy" \
-  #     --header "Content-Type: application/json" \
-  #     --data "{\"Versao\": \"${CI_COMMIT_TAG}\", \"Componente\": \"Deploy-teste\", \"Responsavel\": \"${GITLAB_USER_EMAIL}\"}"
+  before_script:
+    - |
+      curl --location --request POST "http://127.0.0.1:3000/deploy" \
+      --header "Content-Type: application/json" \
+      --data "{\"status\": \"processando\", \"Versao\": \"${CI_COMMIT_TAG}\", \"Componente\": \"Deploy-teste\", \"Responsavel\": \"${GITLAB_USER_EMAIL}\"}"
   script:
     - docker stack deploy --compose-file=./dev/mongodb.yml api
   only:
